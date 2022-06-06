@@ -15,50 +15,50 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qa.starterproject.domain.Book;
-import com.qa.starterproject.dto.BookDto;
-import com.qa.starterproject.service.BookService;
+import com.qa.starterproject.domain.Review;
+import com.qa.starterproject.dto.ReviewDto;
+import com.qa.starterproject.service.ReviewService;
 
 @RestController
-@RequestMapping("/book")
+@RequestMapping("/review")
 @CrossOrigin
-public class BookController {
+public class ReviewController {
 	
-	private BookService service;
+	private ReviewService service;
 
-	public BookController(BookService service) {
+	public ReviewController(ReviewService service) {
 		this.service = service;
 	}
 
 	// create
 	@PostMapping("/create")
-	public ResponseEntity<BookDto> create(@RequestBody Book book) {
-		return new ResponseEntity<BookDto>(this.service.create(book), HttpStatus.CREATED);
+	public ResponseEntity<ReviewDto> create(@RequestBody Review review) {
+		return new ResponseEntity<ReviewDto>(this.service.create(review), HttpStatus.CREATED);
 	}
 
 	// read
 	@GetMapping("/readAll")
-	public ResponseEntity<List<BookDto>> read() {
-		return new ResponseEntity<List<BookDto>>(this.service.readAll(), HttpStatus.OK);
+	public ResponseEntity<List<ReviewDto>> read() {
+		return new ResponseEntity<List<ReviewDto>>(this.service.readAll(), HttpStatus.OK);
 	}
 
 	// read ID
 	@GetMapping("/read/{id}")
-	public ResponseEntity<BookDto> readId(@PathVariable Long id) throws Exception {
-		return new ResponseEntity<BookDto>(this.service.readId(id), HttpStatus.OK);
+	public ResponseEntity<ReviewDto> readId(@PathVariable Long id) throws Exception {
+		return new ResponseEntity<ReviewDto>(this.service.readId(id), HttpStatus.OK);
 	}
 
-	// find book by author
-	@GetMapping("/author/{str}")
-	public ResponseEntity<List<BookDto>> findByTitle(@PathVariable String str) {
-		return new ResponseEntity<List<BookDto>>(this.service.findByTitle(str), HttpStatus.OK);
+	// find review by rating
+	@GetMapping("/rating/{num}")
+	public ResponseEntity<List<ReviewDto>> findByTitle(@PathVariable int num) {
+		return new ResponseEntity<List<ReviewDto>>(this.service.findByTitle(num), HttpStatus.OK);
 	}
 	
 
 	// update
 	@PutMapping("/update/{id}")
-	public ResponseEntity<BookDto> update(@PathVariable Long id, @RequestBody Book book) throws Exception {
-		return new ResponseEntity<BookDto>(this.service.update(id, book), HttpStatus.ACCEPTED);
+	public ResponseEntity<ReviewDto> update(@PathVariable Long id, @RequestBody Review review) throws Exception {
+		return new ResponseEntity<ReviewDto>(this.service.update(id, review), HttpStatus.ACCEPTED);
 	}
 
 	// delete

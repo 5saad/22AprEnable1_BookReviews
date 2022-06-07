@@ -1,6 +1,10 @@
 package com.qa.starterproject.dto;
 
 
+import java.util.List;
+
+import com.qa.starterproject.domain.Review;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,4 +16,5 @@ public class BookDto {
 	private String title;
 	private String description;
 	private String author;
+	private List<Review> reviews;
 }

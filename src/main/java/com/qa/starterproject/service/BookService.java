@@ -47,8 +47,7 @@ public class BookService {
 		Book exists = this.repo.findById(id).orElseThrow(BookException::new);
 		exists.setTitle(book.getTitle());
 		exists.setDescription(book.getDescription());
-		exists.setFirstName(book.getFirstName());
-		exists.setSurname(book.getSurname());
+		exists.setAuthor(book.getAuthor());
 		return this.mapToDto(this.repo.saveAndFlush(exists));
 	}
 
@@ -59,7 +58,7 @@ public class BookService {
 		return !this.repo.existsById(id);
 	}
 
-	// find book by title
+	// find book by author
 	public List<BookDto> findByTitle(String str) {
 		return this.repo.findByTitle(str).stream().map(this::mapToDto).collect(Collectors.toList());
 	}

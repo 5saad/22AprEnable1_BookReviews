@@ -6,12 +6,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.qa.starterproject.domain.Book;
+import com.qa.starterproject.domain.Review;
 
 @Repository
-public interface BookRepo extends JpaRepository<Book, Long> {
+public interface ReviewRepo extends JpaRepository<Review, Long> {
 	
-	@Query(value = "SELECT * FROM BOOK WHERE author LIKE '%?1%'", nativeQuery = true)
-	public List<Book> findByTitle(String str);
+	@Query(value = "SELECT * FROM REVIEW WHERE rating = ?1", nativeQuery = true)
+	public List<Review> findByTitle(int num);
 	
 }

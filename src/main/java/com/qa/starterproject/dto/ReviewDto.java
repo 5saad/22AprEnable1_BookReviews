@@ -1,8 +1,5 @@
 package com.qa.starterproject.dto;
 
-
-import com.qa.starterproject.domain.Book;
-
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -16,4 +13,12 @@ public class ReviewDto {
 	private int rating;
 	private String review;
 //	private Book book;
+	
+	public ReviewDto(Long id, String firstName, String surname, int rating, String review) {
+		this.id = id;
+		this.firstName = firstName;
+		this.surname = surname;
+		this.rating = rating;
+		this.review = review;
+	} 
 }

@@ -20,6 +20,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Review {
 
+	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -32,5 +34,15 @@ public class Review {
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JsonBackReference
 	@JoinColumn(name="book_id")
-    private Book book; 
+    private Book book;
+
+	public Review(Long id, String firstName, String surname, int rating, String review) {
+		this.id = id;
+		this.firstName = firstName;
+		this.surname = surname;
+		this.rating = rating;
+		this.review = review;
+	} 
+	
+	
 }

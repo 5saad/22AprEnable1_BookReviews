@@ -51,7 +51,7 @@ public class ReviewController {
 	// find review by rating
 	@GetMapping("/rating/{num}")
 	public ResponseEntity<List<ReviewDto>> findByTitle(@PathVariable int num) {
-		return new ResponseEntity<List<ReviewDto>>(this.service.findByTitle(num), HttpStatus.OK);
+		return new ResponseEntity<List<ReviewDto>>(this.service.findByRating(num), HttpStatus.OK);
 	}
 	
 

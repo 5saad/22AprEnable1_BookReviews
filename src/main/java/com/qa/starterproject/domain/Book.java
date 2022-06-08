@@ -24,8 +24,16 @@ public class Book {
 	private String title;
 	private String description;
 	private String author;
-	
-	@OneToMany(targetEntity = Review.class,mappedBy= "book") 
+
+	@OneToMany(targetEntity = Review.class, mappedBy = "book")
 	@JsonManagedReference
-    private List<Review> reviews; 
+	private List<Review> reviews;
+
+	public Book(Long id, String title, String description, String author) {
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.author = author;
+	}
+
 }

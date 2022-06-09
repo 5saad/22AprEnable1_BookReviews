@@ -87,5 +87,17 @@ public class BookServiceTest {
 		Mockito.verify(this.repo, Mockito.times(1)).findById(id);
 		Mockito.verify(this.repo, Mockito.times(1)).existsById(id);
 	}
+	
+	@Test
+	public void findByAuthorTest() {
+		List<Book> expectedBook = List.of(new Book(1L, "cool title", "random description", "an author"));
+		List<BookDto> expectedBookDto = List.of(new BookDto(1L, "cool title", "random description", "an author"));
+		final String author= "author";
+		
+		Mockito.when(this.repo.findByAuthorContains(author)).thenReturn(expectedBook);
+		assertThat(this.service.findByAuthor(author)).isEqualTo(expectedBookDto);
+		
+		Mockito.verify(this.repo, Mockito.times(1)).findByAuthorContains(author);
+	}
 
 }

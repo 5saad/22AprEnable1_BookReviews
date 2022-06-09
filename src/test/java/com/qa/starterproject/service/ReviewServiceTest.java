@@ -88,9 +88,8 @@ public class ReviewServiceTest {
 	}
 	
 	@Test
-	public void findByRating() {
-		List<Review> expectedReviews = List.of(new Review(1L, "john", "doe", 5, "cool book"),
-				new Review(2L, "sam", "thomas", 2, "meh book"));
+	public void findByRatingTest() {
+		List<Review> expectedReviews = List.of(new Review(2L, "sam", "thomas", 2, "meh book"));
 		List<ReviewDto> expectedReviewsDto = List.of(new ReviewDto(2L, "sam", "thomas", 2, "meh book"));
 		final int rating = 2;
 		
@@ -98,7 +97,6 @@ public class ReviewServiceTest {
 		assertThat(this.service.findByRating(rating)).isEqualTo(expectedReviewsDto);
 		
 		Mockito.verify(this.repo, Mockito.times(1)).findByRating(rating);
-		
 	}
 
 }

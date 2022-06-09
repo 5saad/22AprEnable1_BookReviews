@@ -59,8 +59,8 @@ public class BookService {
 	}
 
 	// find book by author
-	public List<BookDto> findByTitle(String str) {
-		return this.repo.findByTitleContains(str).stream().map(this::mapToDto).collect(Collectors.toList());
+	public List<BookDto> findByAuthor(String str) {
+		return this.repo.findByAuthorContains(str).stream().map(this::mapToDto).collect(Collectors.toList());
 	}
 
 }

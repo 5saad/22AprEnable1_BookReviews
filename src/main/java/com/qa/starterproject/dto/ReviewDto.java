@@ -12,7 +12,6 @@ public class ReviewDto {
 	private String surname;
 	private int rating;
 	private String review;
-//	private Book book;
 	
 	public ReviewDto(Long id, String firstName, String surname, int rating, String review) {
 		this.id = id;

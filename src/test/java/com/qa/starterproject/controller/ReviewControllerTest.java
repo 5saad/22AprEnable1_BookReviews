@@ -8,7 +8,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ import com.qa.starterproject.domain.Review;
 @ActiveProfiles("dev")
 @Sql(scripts = {"classpath:testschema.sql","classpath:testdata.sql"},executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @AutoConfigureMockMvc
-public class BookControllerTest {
+public class ReviewControllerTest {
 	
 	@Autowired
     private MockMvc mock;
@@ -41,62 +40,61 @@ public class BookControllerTest {
     
    
     private final Long testId = 1L;
-    private final String testAuthor = "prof. jeff";
-    private final Book testBook = new Book(1L,"the title", "nice book", "prof. jeff");
-    
-    private final List<Review> expectedReviews = List.of(new Review(1L ,"john", "doe", 4, "good"));
-    private final Book testBookRev = new Book(1L,"the title", "nice book","prof. jeff",expectedReviews); 
-    private final ArrayList<Book> bookArray = new ArrayList<Book>();
+    private final int testRating = 4;
+    private final Book testBook = new Book(1L,"the title", "nice review", "prof. jeff");
+    private final Review testReview = new Review(1L,"john","doe",4,"good",testBook);
+  
+    private final ArrayList<Review> reviewArray = new ArrayList<Review>();
     
 
     
     
     @Test
-    void createBookTest() throws Exception {
+    void createReviewTest() throws Exception {
     	
-    	RequestBuilder request = post("/book/create").contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(testBook));
+    	RequestBuilder request = post("/review/create").contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(testReview));
     	ResultMatcher responseStatus = status().isCreated();
-    	ResultMatcher responseContent = content().json(this.mapper.writeValueAsString(testBook));
+    	ResultMatcher responseContent = content().json(this.mapper.writeValueAsString(testReview));
     	this.mock.perform(request).andExpect(responseStatus).andExpect(responseContent);
     }
  
  
     
     @Test
-    void readAllBookTest() throws Exception { 
-    	bookArray.add(testBookRev);
+    void readAllReviewTest() throws Exception { 
+    	reviewArray.add(testReview);
     	
-    	RequestBuilder request = get("/book/readAll").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON);
+    	RequestBuilder request = get("/review/readAll").contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON);
     	ResultMatcher responseStatus = status().isOk();
-    	ResultMatcher responseContent = content().json(this.mapper.writeValueAsString(bookArray));
+    	ResultMatcher responseContent = content().json(this.mapper.writeValueAsString(reviewArray));
     	this.mock.perform(request).andExpect(responseStatus).andExpect(responseContent);
     }
     
     @Test
     void readByIdTest() throws Exception {
-    	RequestBuilder request = get("/book/read/"+testId).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON);
+    	RequestBuilder request = get("/review/read/"+testId).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON);
     	ResultMatcher responseStatus = status().isOk();
-    	ResultMatcher responseContent = content().json(this.mapper.writeValueAsString(testBookRev));
+    	ResultMatcher responseContent = content().json(this.mapper.writeValueAsString(testReview));
     	this.mock.perform(request).andExpect(responseStatus).andExpect(responseContent);
     }
     
     @Test
-    void readByAuthor() throws Exception {
-    	bookArray.add(testBookRev);
-    	RequestBuilder request = get("/book/author/"+testAuthor).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON);
+    void readByRating() throws Exception {
+    	reviewArray.add(testReview);
+    	RequestBuilder request = get("/review/rating/"+testRating).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON);
     	ResultMatcher responseStatus = status().isOk();
-    	ResultMatcher responseContent = content().json(this.mapper.writeValueAsString(bookArray));
+    	ResultMatcher responseContent = content().json(this.mapper.writeValueAsString(reviewArray));
     	this.mock.perform(request).andExpect(responseStatus).andExpect(responseContent);
     }
     
     @Test
     void updateTest() throws Exception {
-    	final Book newTestBook = new Book(null,"new", "newer", "newest");
-    	final Book updatedTestBook = new Book(1L,"new", "newer", "newest",expectedReviews);
+    	final Review newTestReview = new Review(null,"myname", "jeff", 2, "meh");
+    	final Review updatedTestReview = new Review(1L,"myname", "jeff", 2, "meh",testBook);
     	
-    	RequestBuilder request = put("/book/update/"+testId).contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(newTestBook));
+    	RequestBuilder request = put("/review/update/"+testId).contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(newTestReview));
     	ResultMatcher responseStatus = status().isAccepted();
-    	ResultMatcher responseContent = content().json(this.mapper.writeValueAsString(updatedTestBook));
+    	ResultMatcher responseContent = content().json(this.mapper.writeValueAsString(updatedTestReview));
     	this.mock.perform(request).andExpect(responseStatus).andExpect(responseContent);
     	
     	
@@ -104,12 +102,9 @@ public class BookControllerTest {
     
     @Test
     void deleteTest() throws Exception {
-    	RequestBuilder request = delete("/book/delete/"+testId);
+    	RequestBuilder request = delete("/review/delete/"+testId);
     	ResultMatcher responseStatus = status().isNoContent();
     	this.mock.perform(request).andExpect(responseStatus);
     }  
 	
 }
-    
-
-

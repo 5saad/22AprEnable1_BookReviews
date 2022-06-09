@@ -42,7 +42,23 @@ public class Review {
 		this.surname = surname;
 		this.rating = rating;
 		this.review = review;
-	} 
+	}
+
+	public Review(Long id, String firstName, String surname, int rating, String review, Book book) {
+		super();
+		this.id = id;
+		this.firstName = firstName;
+		this.surname = surname;
+		this.rating = rating;
+		this.review = review;
+		this.book = book;
+	}
+
+	
+
+	
+	
+	
 	
 	
 }

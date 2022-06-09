@@ -51,7 +51,7 @@ public class BookController {
 	// find book by author
 	@GetMapping("/author/{str}")
 	public ResponseEntity<List<BookDto>> findByTitle(@PathVariable String str) {
-		return new ResponseEntity<List<BookDto>>(this.service.findByTitle(str), HttpStatus.OK);
+		return new ResponseEntity<List<BookDto>>(this.service.findByAuthor(str), HttpStatus.OK);
 	}
 	
 

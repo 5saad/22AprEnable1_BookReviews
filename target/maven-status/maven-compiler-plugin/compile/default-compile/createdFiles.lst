@@ -1,0 +1,14 @@
+com\qa\starterproject\repo\BookRepo.class
+com\qa\starterproject\controller\BookController.class
+com\qa\starterproject\dto\BookDto.class
+com\qa\starterproject\repo\ReviewRepo.class
+com\qa\starterproject\domain\Review.class
+com\qa\starterproject\config\AppConfig.class
+com\qa\starterproject\service\BookService.class
+com\qa\starterproject\controller\ReviewController.class
+com\qa\starterproject\exception\BookException.class
+com\qa\starterproject\exception\ReviewException.class
+com\qa\starterproject\domain\Book.class
+com\qa\starterproject\dto\ReviewDto.class
+com\qa\starterproject\BookReviewsApplication.class
+com\qa\starterproject\service\ReviewService.class

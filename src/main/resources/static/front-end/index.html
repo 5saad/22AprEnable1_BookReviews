@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Reviews</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <h1>Book Reviews</h1>
+    <br />
+
+    <h3 id="books">Books</h3>
+
+    <div class="form-row">
+      <label for="book id">ID</label>
+      <input id="book id" type="number" placeholder="Enter an ID number" />
+      <label for="title">Title</label>
+      <input id="title" type="text" placeholder="Enter a book title" />
+      <label for="description">Description</label>
+      <input id="description" type="text" placeholder="Enter a description" />
+      <label for="author">Author</label>
+      <input id="author" type="text" placeholder="Enter the authors name" />
+    </div>
+
+    <div>
+      <br />
+      <button type="button" id="create book" class="btn btn-success">
+        Create Book
+      </button>
+      <button type="button" id="book by id" class="btn btn-secondary">
+        Find By ID
+      </button>
+      <button type="button" id="find by author" class="btn btn-secondary">
+        Find By Author
+      </button>
+      <button type="button" id="read all books" class="btn btn-secondary">
+        Read All Books
+      </button>
+      <button type="button" id="update book" class="btn btn-warning">
+        Update Book
+      </button>
+      <button type="button" id="delete book" class="btn btn-danger">
+        Delete Book
+      </button>
+    </div>
+
+    <br />
+    <h3 id="reviews">Reviews</h3>
+
+    <div>
+      <label for="review id">ID</label>
+      <input id="review id" type="number" placeholder="Enter an ID number" />
+      <label for="first name">First name</label>
+      <input id="first name" type="text" placeholder="Enter your first name" />
+      <label for="surname">Surname</label>
+      <input id="surname" type="text" placeholder="Enter your surname" />
+      <label for="rating">Rating</label>
+      <select id="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <label for="review">Review</label>
+
+      <input id="review" type="text" placeholder="Enter your review" />
+      <label for="book id review">Book ID</label>
+      <input id="book id review" type="number" placeholder="Enter a book id" />
+    </div>
+
+    <div>
+      <br />
+      <button type="button" id="create review" class="btn btn-success">
+        Create Review
+      </button>
+      <button type="button" id="review by id" class="btn btn-secondary">
+        Find By ID
+      </button>
+      <button type="button" id="find by rating" class="btn btn-secondary">
+        Find By Rating
+      </button>
+      <button type="button" id="read all reviews" class="btn btn-secondary">
+        Read All Reviews
+      </button>
+      <button type="button" id="update review" class="btn btn-warning">
+        Update Review
+      </button>
+      <button type="button" id="delete review" class="btn btn-danger">
+        Delete Review
+      </button>
+    </div>
+
+    <div class="book container" style="height: 500px; overflow: auto">
+      <br />
+      <caption style="text-align: right">
+        Books
+      </caption>
+      <table class="table table-bordered" style="height: 400px">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Author</th>
+            <th scope="col">Review</th>
+          </tr>
+        </thead>
+        <tbody id="table_body_book"></tbody>
+      </table>
+    </div>
+
+    <div class="review container" style="height: 500px; overflow: auto">
+      <br />
+      <caption style="text-align: right">
+        Reviews
+      </caption>
+      <table class="table table-bordered" style="height: 400px">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Rating</th>
+            <th scope="col">Review</th>
+            <!-- <th scope="col">Book Id</th> -->
+          </tr>
+        </thead>
+        <tbody id="table_body_review"></tbody>
+      </table>
+    </div>
+
+    <script type="text/javascript" src="./script.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

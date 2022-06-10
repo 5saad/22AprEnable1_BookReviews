@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.starterproject.domain.Review;
 import com.qa.starterproject.dto.ReviewDto;
+import com.qa.starterproject.exception.ReviewException;
 import com.qa.starterproject.service.ReviewService;
 
 @RestController
@@ -44,7 +45,7 @@ public class ReviewController {
 
 	// read ID
 	@GetMapping("/read/{id}")
-	public ResponseEntity<ReviewDto> readId(@PathVariable Long id) throws Exception {
+	public ResponseEntity<ReviewDto> readId(@PathVariable Long id) throws ReviewException {
 		return new ResponseEntity<ReviewDto>(this.service.readId(id), HttpStatus.OK);
 	}
 
@@ -57,15 +58,16 @@ public class ReviewController {
 
 	// update
 	@PutMapping("/update/{id}")
-	public ResponseEntity<ReviewDto> update(@PathVariable Long id, @RequestBody Review review) throws Exception {
-		return new ResponseEntity<ReviewDto>(this.service.update(id, review), HttpStatus.ACCEPTED);
+	public ResponseEntity<ReviewDto> update(@PathVariable Long id, @RequestBody Review review) throws ReviewException {
+		return new ResponseEntity<ReviewDto>(this.service.update(id, review), HttpStatus.OK);
 	}
 
 	// delete
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Boolean> delete(@PathVariable Long id) throws Exception {
-		return this.service.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
-				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	public ResponseEntity<Boolean> delete(@PathVariable Long id) throws ReviewException {
+		this.service.delete(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+
 	}
 
 }

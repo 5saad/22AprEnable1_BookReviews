@@ -1,0 +1,5 @@
+com\qa\starterproject\BookReviewsApplicationTests.class
+com\qa\starterproject\service\ReviewServiceTest.class
+com\qa\starterproject\controller\BookControllerTest.class
+com\qa\starterproject\service\BookServiceTest.class
+com\qa\starterproject\controller\ReviewControllerTest.class

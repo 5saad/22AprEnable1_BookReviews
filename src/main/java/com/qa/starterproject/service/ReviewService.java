@@ -23,8 +23,8 @@ public class ReviewService {
 		this.mapper = mapper;
 	}
 
-	private ReviewDto mapToDto(Review car) {
-		return this.mapper.map(car, ReviewDto.class);
+	private ReviewDto mapToDto(Review review) {
+		return this.mapper.map(review, ReviewDto.class);
 	}
 
 	// create review
@@ -60,8 +60,8 @@ public class ReviewService {
 	}
 
 	// find review by title
-	public List<ReviewDto> findByTitle(int num) {
-		return this.repo.findByTitle(num).stream().map(this::mapToDto).collect(Collectors.toList());
+	public List<ReviewDto> findByRating(int num) {
+		return this.repo.findByRating(num).stream().map(this::mapToDto).collect(Collectors.toList());
 	}
 
 }

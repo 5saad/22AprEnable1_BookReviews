@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.starterproject.domain.Book;
 import com.qa.starterproject.dto.BookDto;
+import com.qa.starterproject.exception.BookException;
 import com.qa.starterproject.service.BookService;
 
 @RestController
@@ -44,28 +45,29 @@ public class BookController {
 
 	// read ID
 	@GetMapping("/read/{id}")
-	public ResponseEntity<BookDto> readId(@PathVariable Long id) throws Exception {
+	public ResponseEntity<BookDto> readId(@PathVariable Long id) throws BookException {
 		return new ResponseEntity<BookDto>(this.service.readId(id), HttpStatus.OK);
 	}
 
 	// find book by author
 	@GetMapping("/author/{str}")
 	public ResponseEntity<List<BookDto>> findByTitle(@PathVariable String str) {
-		return new ResponseEntity<List<BookDto>>(this.service.findByTitle(str), HttpStatus.OK);
+		return new ResponseEntity<List<BookDto>>(this.service.findByAuthor(str), HttpStatus.OK);
 	}
 	
 
 	// update
 	@PutMapping("/update/{id}")
-	public ResponseEntity<BookDto> update(@PathVariable Long id, @RequestBody Book book) throws Exception {
-		return new ResponseEntity<BookDto>(this.service.update(id, book), HttpStatus.ACCEPTED);
+	public ResponseEntity<BookDto> update(@PathVariable Long id, @RequestBody Book book) throws BookException {
+		return new ResponseEntity<BookDto>(this.service.update(id, book), HttpStatus.OK);
 	}
 
 	// delete
 	@DeleteMapping("/delete/{id}")
-	public ResponseEntity<Boolean> delete(@PathVariable Long id) throws Exception {
-		return this.service.delete(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
-				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+	public ResponseEntity<Boolean> delete(@PathVariable Long id) throws BookException {
+		 this.service.delete(id);
+		return  new ResponseEntity<>(HttpStatus.NO_CONTENT);
+				
 	}
 
 }

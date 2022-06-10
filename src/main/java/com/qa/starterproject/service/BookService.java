@@ -23,8 +23,8 @@ public class BookService {
 		this.mapper = mapper;
 	}
 
-	private BookDto mapToDto(Book car) {
-		return this.mapper.map(car, BookDto.class);
+	private BookDto mapToDto(Book book) {
+		return this.mapper.map(book, BookDto.class);
 	}
 
 	// create book
@@ -59,8 +59,8 @@ public class BookService {
 	}
 
 	// find book by author
-	public List<BookDto> findByTitle(String str) {
-		return this.repo.findByTitle(str).stream().map(this::mapToDto).collect(Collectors.toList());
+	public List<BookDto> findByAuthor(String str) {
+		return this.repo.findByAuthorContains(str).stream().map(this::mapToDto).collect(Collectors.toList());
 	}
 
 }

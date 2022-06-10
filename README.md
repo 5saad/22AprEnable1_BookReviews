@@ -17,25 +17,23 @@ You will need: Java version 1.8, the latest mySQL version 8.0.19 or higher.
 
 ### Installing and Deployment
 
-A step by step to get a application running running
+A step by step to get the application running
 
 Steps:
 
 ```
-1) Fork this repository 
-2) pull it to your local machine.
-3)
-4)
-5) 
+1) Open target folder, git bash here 
+2) Enter "java -jar BookReviews-0.1.0-SNAPSHOT.jar" into the terminal
+3) The applictaion should be running now
+4) now go to src/main/respources/static/front-end and open index.html
+5) This will open in your browser and the application is ready to use
 ```
 
 To use the application:
 
 ```
-
+Enter the required inputs to create,read update and delete books and reviews.
 ```
-
-
 
 ## Running the tests
 
@@ -71,3 +69,5 @@ Version 0.1.0.
 
 ## Link to Jira 
 https://saad98.atlassian.net/jira/software/projects/BOOK/boards/4/backlog
+## Link to Selenium Testing
+https://github.com/5saad/BookReviewSelenium
